@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<!--   
+DWS_avg                                                                     
+Created on Thurs Oct 4 2018
+@author: sdh
+
+Copyright 2008 - 2013 Brian R. D'Urso                                  
+                                                                        
+This file is part of Python Instrument Control System,                 
+also known as Pythics.                                                 
+                                                                        
+Pythics is free software: you can redistribute it and/or modify        
+it under the terms of the GNU General Public License as published by   
+the Free Software Foundation, either version 3 of the License, or      
+(at your option) any later version.                                    
+                                                                        
+Pythics is distributed in the hope that it will be useful,             
+but WITHOUT ANY WARRANTY; without even the implied warranty of         
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          
+GNU General Public License for more details.                           
+                                                                        
+You should have received a copy of the GNU General Public License      
+along with Pythics.  If not, see <http://www.gnu.org/licenses/>.       
+-->
+
+<!-- this is a comment -->
+<html> <!-- this is the fundamental section -->
+
+  <head>
+    <title>DWS_avg</title> <!--title of tab-->
+    <style type='text/css'> <!--define styles-->
+      body {background-color: #eeeeee; margin: 10px; padding: 5px}
+      a {align: left; color: black; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      p {align: left; color: black; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h1 {align: center; font-size: 18pt; font-family: default; font-style: normal; font-weight: bold}
+      h2 {align: left; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h3 {align: left; font-size: 14pt; font-family: default; font-style: normal; font-weight: normal}
+      h4 {align: left; font-size: 12pt; font-family: default; font-style: normal; font-weight: normal}
+      h5 {align: left; font-size: 10pt; font-family: default; font-style: normal; font-weight: normal}
+      h6 {align: left; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      object {align: left}
+      table {align: center}
+      .cells {align: left; padding: 1px}
+      .compact {padding: 0px}
+    </style>
+  </head>
+
+  <body> <!--arrange objects for pythics window with table
+    classid is control object type defined in pythics(controls.py)
+    id is name in vi python code-->
+    
+    <h5> </h5>
+    <table width='100%'>
+    <tr><td width='20%'>
+		<h5> </h5>
+		<object classid='FilePicker' id='temp_filename_in' width='100%' height='100'>
+          <param name='label' value='Select File'/>
+          <!-- <param name='type' value='open'/> -->
+          <param name='save' value='False'/>
+          <!--for many controls, various actions are already setup in pythics.
+          Here, we use the action textChanged, so that as soon as the file is selected, 
+          the programmed action (adding filename to an array) will be carried out-->
+          <param name='actions' value="{'textChanged': 'DWS_avg.add_filename_to_array'}"/>
+        </object>
+
+		<table>
+          <tr><td width='100%'><h5>This table is 3x2</h5></td></tr>
+          <tr><td>
+            <h6>r1,c1</h6></td>
+          <td>
+            <h6>r1,c2</h6></td></tr>
+          <tr><td>
+            <h6>r2,c1</h6></td>
+          <td>
+            <h6>r2,c2</h6></td></tr>
+          <tr><td>
+            <h6>r3,c1</h6></td>
+          <td>
+            <h6>r3,c2</h6></td></tr>
+        </table>
+      </td>
+      <td width='70%'>    
+        <table>
+          <tr><td><h5>This table is two items side by side</h5></td></tr>
+          <tr><td width='30%'>
+            <h6>left panel</h6>
+            <object classid='TextBox' id='text1' height='200'>
+            </object>
+            </td>
+          <td>
+            <h6>right panel</h6>
+            <object classid='TextBox' id='text2' width='300' height='100'>
+            </object>
+            </td></tr>
+        </table>
+      </td></tr>
+    </table>
+
+    <hr/><!--insert dividing line--> 
+            
+    <object classid='TextBox' id='text1' width='200'>
+	</object>
+
+    <object classid='FilePicker' id='config_filename_in' width='100%' height='100'>
+      <param name='label' value='File to Load'/>
+      <!-- <param name='type' value='open'/> -->
+      <param name='save' value='False'/>
+      <!--for many controls, various actions are already setup in pythics.
+      Here, we use the action textChanged, so that as soon as the file is selected, 
+      the programmed action will be carried out-->
+      <param name='actions' value="{'textChanged': 'DWS_avg.read_config'}"/>
+    </object>
+
+    <h5>Parameters</h5> <!--insert heading; apply style-->
+
+    <table>
+      <tr><td>
+        <object classid='TextBox' id='parameter1' width='200'>
+        </object>
+      </td><td>
+        <object classid='TextBox' id='parameter3' width='200'>
+        </object>
+      </td></tr>
+      <tr><td>
+        <object classid='TextBox' id='parameter2' width='200'>
+        </object> 
+      </td></tr>
+    </table>
+    
+    <hr/><!--insert dividing line--> 
+
+    <object classid='TextIOBox' height='100' id='log_text_box' width='100%'>
+      <param name='save' value='False'/>
+    </object>
+    <object classid='MessageDialog' id='error_dialog' width='0%'>
+      <param name='title' value='Error'/>
+      <param name='severity' value='critical'/>
+      <param name='ok_button' value='True'/>
+    </object>
+      <br/>
+    <object classid='ScriptLoader' width='0%'>
+      <param name='filename' value='DWS_avg_a'/> 
+      <!--this will run the python file DWS_avg_a.py
+      Subsequently methods may be called. Here, we call initialize.--> 
+      <param name='actions' value="{'initialized': 'DWS_avg.initialize'}"/>
+    </object>
+    <object classid='ParameterLoader' id='paramload' width='0%'>
+      <param name='filename' value=''/>
+	  <!-- this is just a place holder parameter loader. Normally, you would have a filename assigned:
+	  i.e. <param name='filename' value='DWS_avg_defaults.txt'/> -->
+    </object>
+	<br/>
+
+<!--To write a defaults file for the first time: ***********
+1. setup xml file
+2. run the vi in pythics
+3. enter the default values into the UI
+4. use the menu >Parameters >SaveAs
+5. voila!
+-->
+    
+  </body>
+
+</html>

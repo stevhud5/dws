@@ -1,0 +1,8 @@
+{
+    "text1": "Initialized!!",
+    "text2": "",
+    "parameter1": "p1in",
+    "parameter3": "p3in",
+    "parameter2": "p2in",
+    "error_dialog": null
+}

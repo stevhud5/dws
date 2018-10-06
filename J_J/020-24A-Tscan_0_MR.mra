@@ -1,0 +1,21 @@
+MicroRheology Analysis v9.2.8 
+08/22/18 9:16:17 AM
+
+Correlation Mode:	Cross
+Geometry:	Transmission
+Multi-Tau Duration (s):	120
+Echo Duration (s):	60
+Wavelength (nm):	685.0
+Temperature (°C):	35.01
+Cuvette Thickness (mm):	10.00
+Absorption Length (mm):	Inf
+Solvent:	Water
+Solvent Refractive Index:	1.329
+Particle Radius (nm):	465.0
+Mean Count Rate (kHz):	174.1
+l* (microns):	993.51
+
+
+
+Lag Time (s)	Mean Square Displacement (micron^2)	Fit Lag Time (s)	Mean Square Displacement Fit (micron^2)	Frequency(rad/s)	G1 (Pa)	G2 (Pa)	G* (Pa)	Complex Viscosity (Pa s)	Loss Tangent (-)	Time (s)	Creep Compliance (1/Pa)
+

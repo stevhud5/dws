@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<!--   
+Template                                                                     
+Created on Mon Apr 23 11:11:26 2018
+@author: sdh
+
+Copyright 2008 - 2013 Brian R. D'Urso                                  
+                                                                        
+This file is part of Python Instrument Control System,                 
+also known as Pythics.                                                 
+                                                                        
+Pythics is free software: you can redistribute it and/or modify        
+it under the terms of the GNU General Public License as published by   
+the Free Software Foundation, either version 3 of the License, or      
+(at your option) any later version.                                    
+                                                                        
+Pythics is distributed in the hope that it will be useful,             
+but WITHOUT ANY WARRANTY; without even the implied warranty of         
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          
+GNU General Public License for more details.                           
+                                                                        
+You should have received a copy of the GNU General Public License      
+along with Pythics.  If not, see <http://www.gnu.org/licenses/>.       
+-->
+
+<!-- this is a comment -->
+<html> <!-- this is the fundamental section -->
+
+  <head>
+    <title>template</title> <!--title of tab-->
+    <style type='text/css'> <!--define styles-->
+      body {background-color: #eeeeee; margin: 10px; padding: 5px}
+      a {align: left; color: black; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      p {align: left; color: black; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h1 {align: center; font-size: 18pt; font-family: default; font-style: normal; font-weight: bold}
+      h2 {align: left; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h3 {align: left; font-size: 14pt; font-family: default; font-style: normal; font-weight: normal}
+      h4 {align: left; font-size: 12pt; font-family: default; font-style: normal; font-weight: normal}
+      h5 {align: left; font-size: 10pt; font-family: default; font-style: normal; font-weight: normal}
+      h6 {align: left; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      object {align: left}
+      table {align: center}
+      .compact {padding: 0px}
+    </style>
+  </head>
+
+  <body> <!--arrange objects for pythics window
+    classid is control object type defined in pythics(controls.py)
+    id is name in vi python code-->
+    
+    <object classid='TextBox' id='text1' width='200'>
+    </object>
+
+        <object classid='FilePicker' id='config_filename_in' width='100%'>
+          <param name='label' value='File to Load'/>
+          <param name='type' value='open'/>
+          <param name='save' value='False'/>
+          <!--for many controls, various actions are already setup in pythics.
+          Here, we use the action textChanged, so that as soon as the file is selected, 
+          the programmed action will be carried out-->
+          <param name='actions' value="{'textChanged': 'template.read'}"/>
+        </object>
+
+<!--    <table width='100%'> <!--for arranging in columns across window-->
+
+<!--      <tr><td colspan='1'>
+      </td></tr>
+    -->
+      
+      <!-- <br/>--><!--insert divider?--> 
+
+      <h5>Parameters</h5> <!--insert heading; apply style-->
+      
+<!--      <td width='20%'>
+        <object classid='TextBox' id='parameter1' width='200'>
+        </object>
+        <object classid='TextBox' id='parameter2' width='200'>
+        </object> <!--how to make these together in the same column?-->
+<!--      </td>
+
+      <td width='40%'>
+        <object classid='TextBox' id='parameter3' width='200'>
+        </object> <!--how to make these together in the same column?-->
+<!--      </td>
+
+    </table>
+-->
+    <hr/><!--insert dividing line--> 
+
+    <object classid='TextIOBox' height='100' id='log_text_box' width='100%'>
+      <param name='save' value='False'/>
+    </object>
+    <object classid='MessageDialog' id='error_dialog' width='0%'>
+      <param name='title' value='Error'/>
+      <param name='severity' value='critical'/>
+      <param name='ok_button' value='True'/>
+    </object>
+      <br/>
+    <object classid='ScriptLoader' width='0%'>
+      <param name='filename' value='template'/> 
+      <!--this will run the python file template.py
+      Subsequently methods may be called. Here, we call initialize.--> 
+      <param name='actions' value="{'initialized': 'template.initialize'}"/>
+    </object>
+      <br/>
+
+    
+  </body>
+
+</html>

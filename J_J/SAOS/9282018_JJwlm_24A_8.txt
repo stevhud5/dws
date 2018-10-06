@@ -1,0 +1,111 @@
+Filename	9282018_JJwlm_24A_8
+Instrument name	4010-0082
+Operator	sdh
+rundate	9/28/2018
+proceduresegments	Frequency Sweep#Frequency Sweep#Frequency Sweep#Frequency Sweep#Frequency Sweep
+[File Parameters]
+Name	9282018_JJwlm_24A_8
+Instrument type	AresG2
+Instrument serial number	4010-0082
+Instrument name	4010-0082
+Instrument location	Loc-NIST
+Company name	NIST
+Trios version	4.3.1.39215
+File name	C:\ProgramData\TA Instruments\TRIOS\Data\9282018_JJwlm_24A_8.tri
+Run date	9/28/2018 11:45:07 AM
+Time at start of test	21.7980
+[Firmware Versions]
+Code Image Loader	V2018.2.13
+Main Embedded Kernel	V2018.3.1
+Power Board	V2017.1.11
+Linear Encoder Board	V2017.1.11
+Stepper / Rear Panel Board	V2017.1.11
+Lower (Motor) PRTBoard	V2012.6.25
+Upper (Transducer) PRT Board	V2012.6.25
+Phase Fire Board	V2018.3.2
+Environmental (Peltier/EHP) Board	V2017.1.11
+FCO PRT Board	V2011.9.7
+[Calibration Date Information]
+Motor commutation angle calibration	1/19/2018 11:30 AM
+Phase angle correction calibration	1/19/2018 2:09 PM
+Encoder mapping calibration	1/19/2018 12:24 PM
+Encoder impairments calibration	1/19/2018 12:09 PM
+Motor residual torque calibration	1/19/2018 11:51 AM
+Transducer static normal calibration	9/24/2018 3:03 PM
+Transducer static torque calibration	9/24/2018 3:00 PM
+Filter lag correction calibration	1/19/2018 1:29 PM
+Transducer compliance scaling calibration	1/19/2018 12:56 PM
+Motor torque/motor force constant calibration	1/19/2018 1:40 PM
+Programmable gain amplifier calibration	1/19/2018 1:10 PM
+[Calibration Parameters]
+SPFrtScaleLow	52.40314
+SPFrtScaleMid	209.6126
+Transducer full scale	2096.126
+SPNrmScale	2098.042
+SPXducerMass	0
+SPXducerNormDamping	0
+SPXducerNormSpringConst	0
+[step]
+Frequency - 1
+Angular frequency	Step time	Temperature	Oscillation strain	Oscillation stress	Tan(delta)	Storage modulus	Loss modulus	Complex viscosity
+rad/s	s	°C	%	Pa		Pa	Pa	Pa.s
+500.000	7.73183	35.068	0.792983	1.26121	0.307944	152.003	46.8083	0.318094
+397.164	19.3580	35.067	0.796005	1.16601	0.233029	142.660	33.2440	0.368821
+315.479	28.4105	35.071	0.790344	1.38045	0.131490	173.173	22.7705	0.553647
+250.594	39.7068	35.070	0.796116	1.21637	0.215703	149.353	32.2159	0.609704
+199.054	48.2427	35.068	0.806821	1.21118	0.230799	146.273	33.7596	0.754158
+158.114	62.0858	35.068	0.802351	1.18035	0.229302	143.391	32.8798	0.930418
+125.594	69.9313	35.067	0.811420	1.15383	0.257069	137.722	35.4040	1.13221
+99.7631	81.3673	35.068	0.802360	1.10662	0.266853	133.257	35.5602	1.38248
+80.0000	89.5962	35.067	0.806518	1.07978	0.289877	128.588	37.2746	1.67352
+
+[step]
+Frequency - 2
+Angular frequency	Step time	Temperature	Oscillation strain	Oscillation stress	Tan(delta)	Storage modulus	Loss modulus	Complex viscosity
+rad/s	s	°C	%	Pa		Pa	Pa	Pa.s
+100.000	5.00000	35.063	1.49813	2.07378	0.273709	133.514	36.5440	1.38425
+79.4328	11.3828	35.062	1.50635	2.02333	0.291682	128.947	37.6116	1.69099
+63.0957	19.2808	35.059	1.51520	1.97396	0.318812	124.122	39.5715	2.06475
+50.1187	25.1922	35.062	1.52127	1.91946	0.355422	118.889	42.2557	2.51751
+39.8107	31.6348	35.056	1.52524	1.85676	0.400540	113.007	45.2639	3.05785
+31.6228	46.4552	35.062	1.52780	1.77440	0.459354	105.538	48.4794	3.67268
+25.1189	51.8872	35.061	1.52945	1.69049	0.533745	97.5091	52.0450	4.40025
+19.9526	64.3643	35.060	1.50439	1.56286	0.625615	88.0714	55.0988	5.20667
+15.8489	71.8393	35.057	1.50041	1.45274	0.741762	77.7646	57.6829	6.10911
+12.5893	77.1505	35.057	1.50073	1.33595	0.887406	66.5834	59.0865	7.07111
+10.0000	83.3667	35.055	1.50176	1.20209	1.06968	54.6644	58.4733	8.00458
+8.00000	90.3953	35.056	1.50203	1.06277	1.29436	43.2582	55.9916	8.84443
+
+[step]
+Frequency - 3
+Angular frequency	Step time	Temperature	Oscillation strain	Oscillation stress	Tan(delta)	Storage modulus	Loss modulus	Complex viscosity
+rad/s	s	°C	%	Pa		Pa	Pa	Pa.s
+10.0000	9.46016	35.050	2.48998	1.98863	1.07160	54.4888	58.3905	7.98654
+7.94328	20.4863	35.047	2.48908	1.74171	1.30386	42.5846	55.5243	8.80923
+6.30957	29.3663	35.047	2.48910	1.49730	1.59626	31.9354	50.9773	9.53383
+5.01187	33.0302	35.041	2.48999	1.26614	1.96284	23.0829	45.3079	10.1457
+3.98107	36.1540	35.044	2.48900	1.05085	2.44698	15.9716	39.0821	10.6051
+3.16228	40.0868	35.039	2.48983	0.861129	3.05518	10.7588	32.8699	10.9370
+2.51189	45.0465	35.038	2.49029	0.697499	3.74043	7.23406	27.0585	11.1505
+1.99526	51.3138	35.039	2.48895	0.562708	4.71944	4.68641	22.1172	11.3310
+1.58489	59.1980	35.037	2.48964	0.454112	6.17948	2.91382	18.0059	11.5087
+1.25893	69.1370	35.037	2.49013	0.358460	7.54779	1.89069	14.2705	11.4345
+1.00000	81.6712	35.034	2.49085	0.285781	9.99394	1.14231	11.4162	11.4732
+
+[step]
+Frequency - 4
+Angular frequency	Step time	Temperature	Oscillation strain	Oscillation stress	Tan(delta)	Storage modulus	Loss modulus	Complex viscosity
+rad/s	s	°C	%	Pa		Pa	Pa	Pa.s
+1.00000	12.5740	35.028	9.96344	1.16355	8.76683	1.32351	11.6030	11.6782
+0.794328	36.2682	35.027	9.95987	0.917204	10.9929	0.834277	9.17113	11.5934
+
+[step]
+Frequency - 5
+Angular frequency	Step time	Temperature	Oscillation strain	Oscillation stress	Tan(delta)	Storage modulus	Loss modulus	Complex viscosity
+rad/s	s	°C	%	Pa		Pa	Pa	Pa.s
+200.000	4.96649	35.028	0.793425	1.15638	0.245492	141.542	34.7475	0.728725
+158.866	11.3135	35.026	0.803513	1.13365	0.254404	136.732	34.7852	0.888091
+126.191	20.5648	35.019	0.814999	1.11554	0.273592	132.024	36.1208	1.08467
+100.237	31.8183	35.026	0.802349	1.06447	0.283803	127.629	36.2215	1.32355
+80.0000	39.7237	35.025	0.806678	1.03699	0.312230	122.709	38.3134	1.60689
+
