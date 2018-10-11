@@ -49,11 +49,36 @@ along with Pythics.  If not, see <http://www.gnu.org/licenses/>.
     classid is control object type defined in pythics(controls.py; see that file for reference)
     id is name in vi python code-->
     <h5>Select data files for input.</h5>
+	<object classid='FilePicker' id='filename_in' width='100%' height='60'>
+		<param name='label' value='File to Load'/>
+		<param name='save' value='False'/>
+		<param name='dialog_type' value='open_file'/>
+		<!--for many controls, various actions are already setup in pythics.
+		Here, we use the action textChanged, so that as soon as the file is selected, 
+		the programmed action will be carried out-->
+		<param name='actions' value="{'textChanged': 'dws_process1.add_to_array'}"/>
+	</object>	
+	<br/>
+	<object classid='TextBox' id='filename_out' width='100%'>
+	  <param name='read_only' value='True'/>
+	</object>
+
+	<br/>
+	<object classid='mpl.Plot2D' height='400' id='data_plot' width='100%'>
+	  
+<!--	  <param name='x_scale' value='log'/>
+	  <param name='memory' value='growable'/>
+	  <param name='x_label' value='t (s)'/>
+	  <param name='y_label' value='g2_1'/>
+	  <param name='dpi' value=200/>    -->
+	</object>
+	<br/>
+	
     <table width='100%'>
       <tr><td>
           <object classid='Button' id='trigger_plot' width='100%'> 
             <param name='label' value='Plot'/>
-            <param name='actions' value="{'clicked': 'dws_process1.plot'}"/>
+            <param name='actions' value="{'clicked': 'dws_process1.plot_all'}"/>
             <param name='toggle' value='False'/>
             <param name='save' value='False'/>
           </object>
@@ -64,37 +89,26 @@ along with Pythics.  If not, see <http://www.gnu.org/licenses/>.
             <param name='save' value='False'/>
           </object>
 		</td><td>
+		  <h6>index to del</h6>
+		  <object classid='NumBox' id='index'>
+		    <param name='minimum' value='0'/>
+			<param name='digits' value='0'/>
+		  </object>
+		  <object classid='Button' id='del'>
+		    <param name='actions' value="{'clicked': 'dws_process1.del_from_array'}"/>
+			<param name='label' value='delete'/>
+		  </object>
         </td><td>
+		  <object classid='Button' id='clear_all'>
+		    <param name='actions' value="{'clicked': 'dws_process1.clear_all'}"/>
+			<param name='label' value='clear'/>
+		  </object>
         </td><td>
-        </td></tr>
-      <tr><td colspan='1'>
-        </td></tr><tr><td colspan='4'> <!--can have objects span multiple columns in the table. -->
-          <object classid='FilePicker' id='filename_in' width='100%' height='150'>
-            <param name='label' value='File to Load'/>
-            <param name='save' value='False'/>
-            <param name='dialog_type' value='open_file'/>
-			<!--for many controls, various actions are already setup in pythics.
-			Here, we use the action textChanged, so that as soon as the file is selected, 
-			the programmed action will be carried out-->
-			<param name='actions' value="{'textChanged': 'dws_process1.add_to_array'}"/>
-          </object>
-        </td></tr><tr><td colspan='4'>
-			<object classid='mpl.Plot2D' height='400' id='data_plot' width='100%'>
-			  <param name='plots' value='1'/>
-			  <param name='memory' value='growable'/>
-			  <param name='length' value='1000'/>
-			  <param name='fast_scroll' value='True'/>
-			  <param name='x_scale' value='log'/>
-			  <param name='x_label' value='t (s)'/>
-			  <param name='y_label' value='g2_1'/>
-			  <param name='dpi' value=200/>
-			</object>
         </td></tr>
     </table>
     
 
     <hr/><!--insert dividing line--> 
-            
 
     <object classid='TextIOBox' height='100' id='log_text_box' width='100%'>
       <param name='save' value='False'/>
