@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<!--   
+dws_process_rheol                                                                     
+Created on Mon Oct 8 2018
+@author: sdh
+
+Copyright 2008 - 2013 Brian R. D'Urso                                  
+                                                                        
+This file is part of Python Instrument Control System,                 
+also known as Pythics.                                                 
+                                                                        
+Pythics is free software: you can redistribute it and/or modify        
+it under the terms of the GNU General Public License as published by   
+the Free Software Foundation, either version 3 of the License, or      
+(at your option) any later version.                                    
+                                                                        
+Pythics is distributed in the hope that it will be useful,             
+but WITHOUT ANY WARRANTY; without even the implied warranty of         
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          
+GNU General Public License for more details.                           
+                                                                        
+You should have received a copy of the GNU General Public License      
+along with Pythics.  If not, see <http://www.gnu.org/licenses/>.       
+-->
+
+<!-- this is a comment -->
+<html> <!-- this is the fundamental section -->
+
+  <head>
+    <title>dws_process_rheol</title> <!--title of tab-->
+    <style type='text/css'> <!--define styles-->
+      body {background-color: #eeeeee; margin: 10px; padding: 5px}
+      a {align: left; color: black; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      p {align: left; color: black; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h1 {align: center; font-size: 18pt; font-family: default; font-style: normal; font-weight: bold}
+      h2 {align: left; font-size: 16pt; font-family: default; font-style: normal; font-weight: normal}
+      h3 {align: left; font-size: 14pt; font-family: default; font-style: normal; font-weight: normal}
+      h4 {align: left; font-size: 12pt; font-family: default; font-style: normal; font-weight: normal}
+      h5 {align: left; font-size: 10pt; font-family: default; font-style: normal; font-weight: normal}
+      h6 {align: left; font-size: 8pt; font-family: default; font-style: normal; font-weight: normal}
+      object {align: left}
+      table {align: center}
+      .cells {align: left; padding: 1px}
+      .compact {padding: 0px}
+    </style>
+  </head>
+
+  <body> <!--arrange objects for pythics window with table
+    classid is control object type defined in pythics(controls.py; see that file for reference)
+    id is name in vi python code-->
+    <h5>Gets linear viscoelastic parameters from DWS data.</h5>
+	<object classid='FilePicker' id='folder' width='100%' height='60'>
+		<param name='label' value='Select data folder to process'/>
+		<param name='save' value='False'/>
+		<param name='dialog_type' value='directory'/>
+		<!--for many controls, various actions are already setup in pythics.
+		Here, we use the action textChanged, so that as soon as the folder is selected, 
+		the programmed action will be carried out-->
+		<param name='actions' value="{'textChanged': 'dws_process_rheol.run'}"/>
+	</object>	
+	<br/>
+	<object classid='TextBox' id='filename_out' width='100%'>
+	  <param name='read_only' value='True'/>
+	</object>
+
+	<br/>
+	<object classid='mpl.Plot2D' height='400' id='data_plot' width='100%'>
+	  
+<!--	  <param name='x_scale' value='log'/>
+	  <param name='memory' value='growable'/>
+	  <param name='x_label' value='t (s)'/>
+	  <param name='y_label' value='g2_1'/>
+	  <param name='dpi' value=200/>    -->
+	</object>
+	<br/>
+	
+    <table width='100%'>
+      <tr><td>
+          <object classid='Button' id='trigger_plot' width='100%'> 
+            <param name='label' value='Plot'/>
+            <param name='actions' value="{'clicked': 'dws_process_rheol.plot_all'}"/>
+            <param name='toggle' value='False'/>
+            <param name='save' value='False'/>
+          </object>
+          <object classid='Button' id='write_avg' width='100%'>
+            <param name='label' value='write avg to file'/>
+            <param name='actions' value="{'clicked': 'dws_process_rheol.write'}"/>
+            <param name='toggle' value='False'/>
+            <param name='save' value='False'/>
+          </object>
+		</td><td>
+		  <h6>index to del</h6>
+		  <object classid='NumBox' id='index'>
+		    <param name='minimum' value='0'/>
+			<param name='digits' value='0'/>
+		  </object>
+		  <object classid='Button' id='del'>
+		    <param name='actions' value="{'clicked': 'dws_process_rheol.del_from_array'}"/>
+			<param name='label' value='delete'/>
+		  </object>
+        </td><td>
+		  <object classid='Button' id='clear_all'>
+		    <param name='actions' value="{'clicked': 'dws_process_rheol.clear_all'}"/>
+			<param name='label' value='clear'/>
+		  </object>
+        </td><td>
+        </td></tr>
+    </table>
+    
+
+    <hr/><!--insert dividing line--> 
+
+    <object classid='TextIOBox' height='100' id='log_text_box' width='100%'>
+      <param name='save' value='False'/>
+    </object>
+    <object classid='MessageDialog' id='error_dialog' width='0%'>
+      <param name='title' value='Error'/>
+      <param name='severity' value='critical'/>
+      <param name='ok_button' value='True'/>
+    </object>
+      <br/>
+    <object classid='ScriptLoader' width='0%'>
+      <param name='filename' value='dws_process_rheol'/> 
+      <!--this will run the python file dws_process_rheol.py
+      Subsequently methods may be called. Here, we call initialize.--> 
+      <param name='actions' value="{'initialized': 'dws_process_rheol.initialize'}"/>
+    </object>
+    <object classid='ParameterLoader' id='paramload' width='0%'>
+      <param name='filename' value='dws_process_rheol_defaults.txt'/>
+	  <!-- this is just a place holder parameter loader. Normally, you would have a filename assigned:
+	  i.e. <param name='filename' value='dws_process_rheol_defaults.txt'/> -->
+    </object>
+	<br/>
+
+<!--To write a defaults file for the first time: ***********
+1. setup xml file
+2. run the vi in pythics
+3. enter the default values into the UI
+4. use the menu >Parameters >SaveAs
+5. voila!
+-->
+    
+  </body>
+
+</html>
