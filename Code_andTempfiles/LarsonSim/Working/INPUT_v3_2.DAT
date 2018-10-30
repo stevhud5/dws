@@ -1,11 +1,12 @@
-019-24A-Tscan_0_2mean-b_MR					!	 Title
-313.15	0.12	0.000653  	        !	"Temperature (K), micelle volume fraction and solvent viscosity (Pa.s)"
-Y	N				!	"Data format (w, G' ,G""), include only mechanical data ?"
-Y	Y	Y			!	"Create detailed output file for Gf(t), G(w), G(w)+Rouse?"
-Y    	90			        !	"Fit persistence length (lp), and its initial guess or fixed value?"
-5.3   1.8	4.0		        !	"Zero shear viscosity (Pa.s), initial guess for micelle length (L) in micron, and diamter (d) in nm"
-5000	20				!	"Size of micelle ensemble, number of iterations"
-Y       0.40    1.0          		!       "Use specific parameter value? dimensionless breakage time, and le/lp"				
+SAMPLE				!Title
+313.15	0.12	0.000653 	!T (K), volume fraction, solvent visc. (Pa.s)
+Y	N			!Data format (w, G' ,G"), only mechanical data?
+N	N	N		!Create output file for Gf(t), G(w), G(w)+Rouse?
+N	Y	N		!Output bending/Rouse modes, iterate?, 1 mode?
+Y    	70			!Fit lp?, initial guess or fixed value
+5.3   1.2	4.0		!Zero shear viscosity (Pa.s), initial guess for micelle length (L) in micron, and diameter (d) in nm
+1500	20			!Size of micelle ensemble, number of iterations
+N       0.40    1.0          	!Set parameter values?, zeta, alpha
 0.625285	0.091067023	2.648015
 0.689972	0.111994026	2.951214
 0.761339	0.138064107	3.29716
